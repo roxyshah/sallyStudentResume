@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Sally Student's Resume</title>
+  </head>
+
+  <body>
+
+      <div id="application-root"></div>
+
+      <script
+          src="https://unpkg.com/react@16/umd/react.development.js">
+      </script>
+  
+      <script
+          src="https://unpkg.com/react-dom@16/umd/react-dom.development.js">
+      </script>
+  
+      <script
+          src="https://unpkg.com/babel-standalone@6/babel.min.js">
+      </script>
+
+      <script type="text/babel">
+      //App Compenent
+        function App(props) {
+          console.log(props);
+          return (
+            <div>
+              <header role="banner">
+                <h1>{props.name}</h1>
+              </header>
+              {props.children}
+            </div>
+          );
+        }
+
+        function Address(props) {
+          return (
+            <address>
+              <p>{props.street}<br/>
+              {props.city}, {props.state} {props.zipCode}</p>
+            </address>
+          );
+        }
+
+        function Main(props) {
+          return (
+            <main role="main">
+              {props.children}
+            </main>
+          );
+        }
+
+        function SectionRegion(props) {
+          return (
+            <section role="region">
+              <h2>{props.header}</h2>
+              <ul>{props.children}</ul>
+            </section>
+
+          );
+        }
+      
+      //nested elements inside the App
+      ReactDOM.render(
+        <App className='my-class' name='Sally Student'>
+
+          <Address street='567 Hone Drive' city='Denver' state='CO' zipCode='80301'>
+          </Address>
+
+          <Main>
+            <p>I'm an aspiring full stack web developer. I love cats, coding, and crocheting.</p>
+          </Main>
+          <SectionRegion header='Contact Info'>
+            <li>Sally Student</li>
+            <li>
+              <p><a href="mailto:rshah2109@gmail.com" target="_blank">rshah2109@gmail.com</a></p>
+            </li>
+            <li>tel:407-867-5309</li>
+            <div><img src="https://ia.media-imdb.com/images/M/MV5BMTY5NzE3NzU3MF5BMl5BanBnXkFtZTgwMjg0NTQ5MDE@._V1_UX214_CR0,0,214,317_AL_.jpg" alt="Picture of Sally Student"/></div>
+          </SectionRegion>
+        
+          <SectionRegion header='Education'>
+            <li>School of Mines</li>
+          </SectionRegion>
+        
+          <SectionRegion header='Employment History'>
+            <li>FunTimes Data Co. | Data Entry Manager | May 2015 - June 2015 | Organized data</li>
+            <li>Bowigens Brewing Co. | Web Developer | March 2016 - April 2016 | Created a functioning website</li>
+          </SectionRegion>
+        </App>,
+        document.querySelector('#application-root')
+      );
+
+      </script>
+
+  </body>
+</html> 
